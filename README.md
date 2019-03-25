@@ -35,4 +35,4 @@
             
             └── SegmentationObject # 影像作分割之後的結果，如下圖所示
             
-
+![SegmentationClass example picture](/Readme_ExampleImage/SegmentationClassExample.PNG)
