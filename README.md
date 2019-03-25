@@ -172,7 +172,10 @@ for Obj in Tree.findall('object'):
         Object.append(ObjStruct)
 ```
 
-此段程式碼是找到所有帶有'object'的標籤，並且建立一個字典，讓每一個物件都有對應的名稱以及座標。
+此段程式碼是找到所有帶有'object'的標籤，並且建立一個字典，使得每一個物件都有對應的名稱以及座標。
+
+> 關於python對於xml的處理，若是想了解更多請參考下列網址
+> *[Python xml.etree.ElementTree — The ElementTree XML API](https://docs.python.org/2/library/xml.etree.elementtree.html)
 
 
 
