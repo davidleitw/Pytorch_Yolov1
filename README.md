@@ -12,10 +12,13 @@
 
 ### 資料集介紹 - Voc2012
 
-這個資料集出自於PASCAL VOC挑戰賽（The PASCAL Visual Object Classes)是一個世界級的計算機視覺挑戰賽。 \n
-PASCAL全稱：Pattern Analysis, Statical Modeling and Computational Learning，是一個由歐盟資助的網絡組織。\n
-此資料集在分類，定位，檢測，分割，動作識別領域都有人做出很知名的模型(Rcnn, Yolo...)\n
+這個資料集出自於PASCAL VOC挑戰賽（The PASCAL Visual Object Classes)是一個世界級的計算機視覺挑戰賽。 
 
+PASCAL全稱：Pattern Analysis, Statical Modeling and Computational Learning，是一個由歐盟資助的網絡組織。
+
+此資料集在分類，定位，檢測，分割，動作識別領域都有人做出很知名的模型(Rcnn, Yolo...)
+
+PASCAL VOC從2005年開始舉辦挑戰賽，每年的內容都有所不同，從最開始的分類，到後面逐漸增加檢測，分割，人體佈局，動作識別（Object Classification 、Object Detection、Object Segmentation、Human Layout、 Action Classification）等等關於不同應用所需要的資料。
 
 
 
