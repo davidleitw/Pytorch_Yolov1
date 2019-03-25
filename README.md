@@ -47,6 +47,7 @@ PASCAL VOC從2005年開始舉辦挑戰賽，每年的內容都有所不同，從
             └── SegmentationObject # 影像作分割之後的結果，如下圖所示
             
 ![SegmentationClass example picture](/Readme_ExampleImage/SegmentationClassExample.PNG)
+
 下面是Annotations隨便取出的一個.xml檔案，以下會用註解的方式說明他如何敘述一張影像。
 
         <annotation>
