@@ -23,8 +23,8 @@ PASCAL VOC從2005年開始舉辦挑戰賽，每年的內容都有所不同，從
 
 
 `   下載網址: http://host.robots.ox.ac.uk/pascal/VOC/voc2012/index.html   `
-        .
-    └── VOCdevkit     # Root
+        
+        └── VOCdevkit # Root
     
         └── VOC2012   # 不同年份的資料集，這裡只下載了2012的，還有2007等其它年份的
         
@@ -40,7 +40,7 @@ PASCAL VOC從2005年開始舉辦挑戰賽，每年的內容都有所不同，從
             
             │   └── Segmentation   # 存放的是可用於分割的資料,做檢測識別也是用不到的.
             
-            ├── JPEGImages         # `最重要的部分，存放著我們要訓練的影像`
+            ├── JPEGImages         # 最重要的部分，存放著我們要訓練的影像
             
             ├── SegmentationClass  # 影像作分割之後的結果，如下圖所示
             
