@@ -1,0 +1,5 @@
+Pytorch_Yolov1\MyYoLo\VOCdevkit\Annotations
+Pytorch_Yolov1\MyYoLo\VOCdevkit\ImageSets\*.txt
+Pytorch_Yolov1\MyYoLo\VOCdevkit\JPEGImages\*.jpg
+Pytorch_Yolov1\MyYoLo\VOCdevkit\SegmentationClass\*.png
+Pytorch_Yolov1\MyYoLo\VOCdevkit\SegmentationObject\*.png
