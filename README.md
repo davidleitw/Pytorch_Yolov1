@@ -150,15 +150,29 @@ def XmlToTxt(filename):
         Object.append(ObjStruct)
     return Object
 ```
-上方程式碼是XML_to_Txt.py 中最關鍵的函式，XmlToTxt主要的用途就是把上一單元介紹的.xml檔轉成較好處理的.txt檔案。
 
+上方程式碼是XML_to_Txt.py 中最關鍵的函式，XmlToTxt主要的用途就是把上一單元介紹的.xml檔轉成較好處理的.txt檔案。
 
 
 ```python
 Tree = ElementTree.parse(filename)
 ```
-一開始建立一個專門用來處理Xml檔案的tree，去做到搜索以及把我們要的資料讀進來的動作。
 
+一開始建立一個專門用來處理Xml檔案的tree，去做到搜索以及讀取我們所需的資料，之後利用.find()先找到'<bndbox></bndbox>'這種在.xml檔案出現的格式，並且使用.text將讀進來的東西轉成字串，藉此處理xml裡面的每一個物件標籤，讓他變成有規則的.txt檔案。
+
+```python
+for Obj in Tree.findall('object'):
+        ObjStruct = {}
+        ObjStruct['name'] = Obj.find('name').text
+        Boxes = Obj.find('bndbox')
+        ObjStruct['Boxes'] = [int(float(Boxes.find('xmin').text)),
+                              int(float(Boxes.find('ymin').text)),
+                              int(float(Boxes.find('xmax').text)),
+                              int(float(Boxes.find('ymax').text))]
+        Object.append(ObjStruct)
+```
+
+此段程式碼是找到所有帶有'object'的標籤，並且建立一個字典，讓每一個物件都有對應的名稱以及座標。
 
 
 
