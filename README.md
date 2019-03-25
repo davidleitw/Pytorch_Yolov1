@@ -114,7 +114,7 @@ PASCAL VOC從2005年開始舉辦挑戰賽，每年的內容都有所不同，從
                 </object>
         </annotation>
 > 更詳細的資料請參考
-> 1. [Pascal Voc資料集詳細介紹](https://arleyzhang.github.io/articles/1dc20586/)
+> * [Pascal Voc資料集詳細介紹](https://arleyzhang.github.io/articles/1dc20586/)
 
 
 
