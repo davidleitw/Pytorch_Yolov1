@@ -150,7 +150,14 @@ def XmlToTxt(filename):
         Object.append(ObjStruct)
     return Object
 ```
-上方程式碼是XML_to_Txt.py 中最關鍵的函式，XmlToTxt(filename)主要的用途就是把上一單元介紹的.xml檔轉成較好處理的.txt檔案。
+上方程式碼是XML_to_Txt.py 中最關鍵的函式，XmlToTxt主要的用途就是把上一單元介紹的.xml檔轉成較好處理的.txt檔案。
+
+
+
+```python
+Tree = ElementTree.parse(filename)
+```
+一開始建立一個專門用來處理Xml檔案的tree，去做到搜索以及把我們要的資料讀進來的動作。
 
 
 
