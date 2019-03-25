@@ -11,6 +11,6 @@
 *  -[x] 資料預處理 針對jpg資料集當中的影像搭配上面.txt檔案的描述來做檔案的預處理
 
 ### 資料集介紹 - Voc2012
-`   **下載網址: http://host.robots.ox.ac.uk/pascal/VOC/voc2012/index.html**   `
+`   下載網址: http://host.robots.ox.ac.uk/pascal/VOC/voc2012/index.html   `
 
 
