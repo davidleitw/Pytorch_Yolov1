@@ -47,27 +47,28 @@ PASCAL VOC從2005年開始舉辦挑戰賽，每年的內容都有所不同，從
             └── SegmentationObject # 影像作分割之後的結果，如下圖所示
             
 ![SegmentationClass example picture](/Readme_ExampleImage/SegmentationClassExample.PNG)
+下面是Annotations隨便取出的一個.xml檔案，以下會用註解的方式說明他如何敘述一張影像。
 
         <annotation>
-                <folder>VOC2012</folder>
-                <filename>2007_000027.jpg</filename>
-                <source>
-                        <database>The VOC2007 Database</database>
+                <folder>VOC2012</folder>                            # 說明此張對應的影像出自哪一年的資料集
+                <filename>2007_000027.jpg</filename>                # 此張影像的名稱
+                <source>                                            # source代表圖片來源
+                        <database>The VOC2007 Database</database> 
                         <annotation>PASCAL VOC2007</annotation>
                         <image>flickr</image>
-                </source>
-                <size>
+                </source>                                           # source區域結束
+                <size>                                              # 影像大小
                         <width>486</width>
                         <height>500</height>
                         <depth>3</depth>
                 </size>
-                <segmented>0</segmented>
-                <object>
-                        <name>person</name>
-                        <pose>Unspecified</pose>
-                        <truncated>0</truncated>
-                        <difficult>0</difficult>
-                        <bndbox>
+                <segmented>0</segmented>                            # 是否分割
+                <object>                                            # 物件說明區域
+                        <name>person</name>                         # 物件名稱
+                        <pose>Unspecified</pose>                    # 拍攝角度
+                        <truncated>0</truncated>                    # 目標是否被截斷(物件是否有超出影像), 或者被遮擋（超過15%）
+                        <difficult>0</difficult>                    # 檢測難易程度，這個主要是根據目標的大小，光照變化，圖片質量來判斷
+                        <bndbox>                                    # 物件左上角跟右下角的點座標(xmin, ymin, xmax, ymax)
                                 <xmin>174</xmin>
                                 <ymin>101</ymin>
                                 <xmax>349</xmax>
@@ -111,6 +112,8 @@ PASCAL VOC從2005年開始舉辦挑戰賽，每年的內容都有所不同，從
                         </part>
                 </object>
         </annotation>
+> 更詳細的資料請參考
+> 1. [Pascal Voc資料集詳細介紹](https://arleyzhang.github.io/articles/1dc20586/)
 
 
 
