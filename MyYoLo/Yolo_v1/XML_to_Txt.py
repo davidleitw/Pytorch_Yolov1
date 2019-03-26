@@ -30,8 +30,6 @@ if __name__ == '__main__':
         Path = Annotations + Xmlfile
         Results = XmlToTxt(Path)
         Num_Obj = len(Results)
-        if Num == 1:
-            print('Path = {}\nResult = {}\nlen = {}'.format(Path, Results, Num_Obj))
 
         Writefile.write(Img)
         Writefile.write(str(Num_Obj) + ' ')
@@ -39,8 +37,6 @@ if __name__ == '__main__':
         for Result in Results:
             Boxes = Result['Boxes']
             ClassesName = Cfg.Voc_Classes.index(Result['name'])
-            if Num == 1:
-                print('Boxes = {}\nClassesName = {}'.format(Boxes, ClassesName))
             Writefile.write('{} {} {} {} {} '.format(str(ClassesName), str(Boxes[0]),
                                                      str(Boxes[1]), str(Boxes[2]),
                                                      str(Boxes[3])))

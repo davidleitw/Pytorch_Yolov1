@@ -177,6 +177,51 @@ for Obj in Tree.findall('object'):
 > 關於python對於xml的處理，若是想了解更多請參考下列網址
 > * [Python xml.etree.ElementTree — The ElementTree XML API](https://docs.python.org/2/library/xml.etree.elementtree.html)
 
+#### Main area 
+```python
+if __name__ == '__main__':
+
+    Writefile = open(r'D:\MyYoLo\Voc2012.txt', 'w')
+    Annotations = Cfg.TrainAnnotations
+    os.chdir(Annotations)
+    Xmlfiles = os.listdir(Annotations)
+
+    for Num, Xmlfile in enumerate(Xmlfiles):
+        Img = Xmlfile.split('.')[0] + '.jpg '
+        Path = Annotations + Xmlfile
+        Results = XmlToTxt(Path)
+        Num_Obj = len(Results)
+
+        Writefile.write(Img)
+        Writefile.write(str(Num_Obj) + ' ')
+
+        for Result in Results:
+            Boxes = Result['Boxes']
+            ClassesName = Cfg.Voc_Classes.index(Result['name'])
+            Writefile.write('{} {} {} {} {} '.format(str(ClassesName), str(Boxes[0]),
+                                                     str(Boxes[1]), str(Boxes[2]),
+                                                     str(Boxes[3])))
+
+        Writefile.write('\n')
+
+    print('Finish writeing, Img number = {}'.format(len(Xmlfiles)))
+    print('Write into Voc2012.txt, Next step is train our yolo')
+    Writefile.close()
+```
+
+main的部分就是正式的將我們的位於資料集內部的xml檔案全部讀取進來，再依序去做處理。
+
+最後輸出的檔案為Voc2012.txt, 位於github的檔案路徑是 Pytorch_Yolov1/MyYoLo/Voc2012.txt
+
+我們拿Voc2012.txt的其中一行來討論
+
+        2007_000032.jpg 4 0 104 78 375 183 0 133 88 197 123 14 195 180 213 229 14 26 189 44 238
+
+首先一開始是對應的影像名稱，第二項那個4 則是我們這張影像內有多少個物件(n)，之後有5*n筆資料(每5個代表一個物件)。
+
+5*n筆資料，開頭的第一筆是那個物件的編號(之後在config.py會介紹到)， 後方四筆分別是(xmin, ymin, xmax, ymax)，以每五筆資料一循環描述一個物件。
+
+***
 
 
 
