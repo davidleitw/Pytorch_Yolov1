@@ -20,7 +20,7 @@ def XmlToTxt(filename):
 
 if __name__ == '__main__':
 
-    Writefile = open(r'D:\MyYoLo\Voc2012.txt', 'w')
+    Writefile = open(r'D:\Pytorch_Yolov1\MyYoLo\Voc2012.txt', 'w')
     Annotations = Cfg.TrainAnnotations
     os.chdir(Annotations)
     Xmlfiles = os.listdir(Annotations)

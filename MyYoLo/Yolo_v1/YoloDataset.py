@@ -67,8 +67,35 @@ class Yolo_Dataset(data.Dataset):
             Img, Boxes, Label = self.Random_Shift(Img, Boxes, Label)
 
         Height, Width, _ = Img.shape
+        Boxes = Boxes / torch.Tensor([Width, Height, Width, Height]).expand_as(Boxes)
+        Img = self.BGR2RGB(Img)
+        Img = self.SubMean(Img, self.mean)
+        Img = cv2.resize(Img, (self.ImgSize, self.ImgSize))
+        # print('Img shape = {}\nImg matrix = {}'.format(Img.shape, Img))
+        #Target = self.Encoder(Boxes, Label)
+
+        #for t in self.transform:
+            #pass
+
+        #return Img, Target
 
 
+    def Encoder(self, Boxes, Labels):
+        Target = torch.zeros((7, 7, 30))
+        print(Target)
+        CeilSize = float(1/7)
+        Wh = Boxes[:, 2:] - Boxes[:, :2]
+        Center_xy = (Boxes[:, 2:] + Boxes[:, :2])/2
+
+        for Index in range(Center_xy.shape[0]):
+            SampleCenter = Center_xy[Index]
+            print(SampleCenter)
+            ij = (SampleCenter/CeilSize).ceil()-1
+            # print(ij.shape)
+            print(ij)
+
+
+        return Target
 
     # 隨機調整亮度
     def Random_Brightness(self, BGR):
@@ -213,24 +240,36 @@ class Yolo_Dataset(data.Dataset):
         return cv2.cvtColor(Img, cv2.COLOR_HSV2BGR)
 
 if __name__ == '__main__':
-    os.chdir(r'D:\MyYoLo')
-    sys.path.append(r'‪D:\MyYoLo\Yolo_v1\Config.py')
 
     Cfg = Config.YoloConfig()
 
     DataSet = Yolo_Dataset(listfile=Cfg.TrainData, root=Cfg.TrainImageRoot)
-    Img = cv2.imread(r'D:\MyYoLo\VOCdevkit\VOC2012\JPEGImages\2007_000032.jpg')
+    Img = cv2.imread(r'D:\Pytorch_Yolov1\MyYoLo\VOCdevkit\VOC2012\JPEGImages\2007_000032.jpg')
     cv2.imshow('Img', Img)
     cv2.waitKey(0)
     print(DataSet.Boxes[1], DataSet.labels[1])
     try:
-        print('Input img number = {}, shape = {}'.format(DataSet.fnames[1], Img.shape))
+        print('Input img name = {}, shape = {}'.format(DataSet.fnames[1], Img.shape))
+        print('Image object boxes = {}, shape = {}'.format(DataSet.Boxes[1], DataSet.Boxes[1].shape))
+
+        Maxpoint = DataSet.Boxes[1][:, 2:]
+        Minpoint = DataSet.Boxes[1][:, :2]
+        print('Max = {}\nMin = {}'.format(Maxpoint, Minpoint))
+        Cxy = (Maxpoint + Minpoint)/2
+        print('Center = {}'.format(Cxy))
+        print('CenterSize = {}'.format(Cxy.shape))
+        print('{}\n{}'.format(Cxy.size()[0], type(Cxy)))
+        DataSet.__getitem__(1)
+        DataSet.Encoder(DataSet.Boxes[1], DataSet.labels[1])
+
+
+
         # Img2, b, l = DataSet.Random_Shift(Img, DataSet.Boxes[1], DataSet.labels[1])
         # Img2, _ = DataSet.Random_Flip(Img, DataSet.Boxes[0])
         # Img2 = DataSet.Random_Bright(Img)
-        Img2, _ = DataSet.Random_Scale(Img, DataSet.Boxes[1])
-        cv2.imshow('Img2', Img2)
-        print(Img2.shape)
-        cv2.waitKey(0)
+        # Img2, _ = DataSet.Random_Scale(Img, DataSet.Boxes[1])
+        # cv2.imshow('Img2', Img2)
+        # print(Img2.shape)
+        # cv2.waitKey(0)
     except BaseException:
         print('Error: Do not read the img\n')

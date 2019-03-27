@@ -1,12 +1,10 @@
 import torch
-import numpy as np
-import os
 
 class YoloConfig():
-    ProgName  = 'Yolo v1'
-    TrainImageRoot = r'D:\MyYoLo\VOCdevkit\VOC2012\JPEGImages/   ' # Img
-    TrainAnnotations = r'D:\MyYoLo\VOCdevkit\VOC2012\Annotations/' # Xml
-    TrainData = r'D:\MyYoLo\Voc2012.txt' # Come from Xml file
+    ProgName = 'Yolo v1'
+    TrainImageRoot = r'D:\YOLO\Data\VOCdevkit\VOC2012\JPEGImages/'  # Img
+    TrainAnnotations = r'D:\YOLO\Data\VOCdevkit\VOC2012\Annotations/'  # Xml
+    TrainData = r'D:\YOLO\Voc2012.txt'  # Come from Xml file
     Testfile = ''
 
     A = 15
@@ -21,5 +19,3 @@ class YoloConfig():
 
 
 Cfg = YoloConfig()
-
-
