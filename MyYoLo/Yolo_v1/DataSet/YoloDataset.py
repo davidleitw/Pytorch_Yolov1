@@ -94,7 +94,7 @@ class Yolo_Dataset(data.Dataset):
             Target[int(ij[1]), int(ij[0]), 4] = 1
             Target[int(ij[1]), int(ij[0]), 4] = 1
             Target[int(ij[1]), int(ij[0]), int(Labels[Index]+9)] = 1
-            
+
 
         return Target
 
