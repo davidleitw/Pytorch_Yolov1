@@ -91,9 +91,10 @@ class Yolo_Dataset(data.Dataset):
             SampleCenter = Center_xy[Index]
             print(SampleCenter)
             ij = (SampleCenter/CeilSize).ceil()-1
-            # print(ij.shape)
-            print(ij)
-
+            Target[int(ij[1]), int(ij[0]), 4] = 1
+            Target[int(ij[1]), int(ij[0]), 4] = 1
+            Target[int(ij[1]), int(ij[0]), int(Labels[i]+9)] = 1
+            
 
         return Target
 
