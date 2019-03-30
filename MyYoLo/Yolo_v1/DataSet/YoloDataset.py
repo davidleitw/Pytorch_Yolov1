@@ -81,7 +81,7 @@ class Yolo_Dataset(data.Dataset):
 
 
     def Encoder(self, Boxes, Labels):
-        # It should return 7*7*30 tensor 
+        # It should return 7*7*30 tensor
         Target = torch.zeros((7, 7, 30))
         print(Target)
         CeilSize = float(1/7)
