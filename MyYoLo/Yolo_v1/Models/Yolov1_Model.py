@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import math
+import torch.utils.model_zoo as model_zoo
 import torch.nn.functional as F
 
 ModelsPath = {'vgg11': 'https://download.pytorch.org/models/vgg11-bbd30ac9.pth',
@@ -85,17 +86,29 @@ def MakeLayers(Cfg, Batch_Norm=None):
 def Vgg19(Pretrained=False, **kwargs):
     Model = VGG(MakeLayers(cfg['E'], Batch_Norm=False), **kwargs)
     if Pretrained:
-        Model.load_state_dict(torch.utils.model_zoo.load_url(ModelsPath['vgg19']))
+        Model.load_state_dict(model_zoo.load_url(ModelsPath['vgg19']))
 
 def Vgg19Bn(Pretrained=False, **kwargs):
     Model = VGG(MakeLayers(cfg['E'], Batch_Norm=True), **kwargs)
     if Pretrained:
-        Model.load_state_dict(torch.utils.model_zoo.load_url(ModelsPath['vgg19_bn']))
+        Model.load_state_dict(model_zoo.load_url(ModelsPath['vgg19_bn']))
     return  Model
 
 
 
 if __name__ == '__main__':
-    Model = VGG()
-    net = MakeLayers(cfg['A'], True)
-    print(net)
+    Model = Vgg19(Pretrained=True)
+    Model.classifier = nn.Sequential(nn.Linear(512 * 7 * 7, 4096),
+                                     nn.ReLU(True),
+                                     nn.Dropout(),
+                                     nn.Linear(4096, 4096),
+                                     nn.ReLU(True),
+                                     nn.Dropout(),
+                                     nn.Linear(4096, 7*7*30))
+    print(Model)
+
+    Img = torch.rand(2, 3, 224, 224)
+    Output = Model(Img)
+    print(Output.size())
+
+    # print(Model)
